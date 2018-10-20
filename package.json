@@ -1,0 +1,20 @@
+{
+  "name": "friend_finder",
+  "version": "1.0.0",
+  "description": "Tinder for people who hate good results",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dawnpatrol506/friend_finder.git"
+  },
+  "author": "Kevin Davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dawnpatrol506/friend_finder/issues"
+  },
+  "homepage": "https://github.com/dawnpatrol506/friend_finder#readme"
+}
