@@ -5,7 +5,7 @@ const apiRouter = require('./app/routing/apiRoutes');
 const htmlRouter = require('./app/routing/htmlRoutes');
 
 
-app.set('port', (process.env.PORT || 8080))
+const port = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -14,4 +14,4 @@ app.use('/', htmlRouter);
 app.use('*', htmlRouter);
 
 
-app.listen(app.get('port'), () => console.log(`Listenting on port ${port}`));
+app.listen(port, () => console.log(`Listenting on port ${port}`));
