@@ -14,7 +14,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/survey', (req, res) => {
-    res.send('survey');
+    fs.readFile('./app/public/survey.html', 'utf-8', (err, data) =>{
+        if(err){
+            console.log(err);
+            return res.send('Something went wrong, try again.');
+        }
+        res.send(data);
+    })
 });
 
 router.get('*', (req, res) => {
