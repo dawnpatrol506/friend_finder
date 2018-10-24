@@ -7,7 +7,7 @@ let friends = require('../data/friends');
 function addToFriends(newFriend, friends){
     friends.push(newFriend);
 
-    const data = 'var friends = ' + JSON.stringify(friends) + '\n module.exports = friends'
+    const data = 'var friends = ' + JSON.stringify(friends, null, 2) + '\n module.exports = friends'
 
     fs.writeFile('./app/data/friends.js', data, err =>{
         if(err){
@@ -42,7 +42,8 @@ router.get('/friends', (req, res) => {
             console.log(err);
             res.send('Someting went wrong, please try again');
         }
-        res.send(JSON.stringify(data));
+
+        res.send('<code>' + JSON.stringify(friends, undefined, 2) + '</code>');
     })
 });
 
@@ -58,8 +59,10 @@ router.post('/', (req, res) => {
         newFriend.answers.push(req.q[answer]);
     }
 
-    console.log(findMatch(newFriend, friends));
+    const match = findMatch(newFriend, friends);
     addToFriends(newFriend, friends);
+
+    res.render('survey', {matchName: match.name, src: match.pic})
 
 });
 
