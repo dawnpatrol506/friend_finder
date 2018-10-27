@@ -48,6 +48,7 @@ router.get('/friends', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+
     req = req.body;
     const newFriend = {
         name: req.name,
@@ -62,7 +63,7 @@ router.post('/', (req, res) => {
     const match = findMatch(newFriend, friends);
     addToFriends(newFriend, friends);
 
-    res.render('survey', {matchName: match.name, src: match.pic})
+    res.jsonp(JSON.stringify(match));
 
 });
 
